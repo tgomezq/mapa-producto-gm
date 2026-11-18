@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Caso 2 - Grupo 13. Las dos tecnologias del techo panoramico de GM y las 16 informaciones del modelo de innovacion tecnologica.">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Mapa del Producto GM</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: encabezado, explicación de las tecnologías, matriz 4x4 navegable, panel de detalle, cierre.
+   El tema claro es el techo de día (patrón invisible); el oscuro es el techo encendido de noche. */
+:root{
+  --bg:#F2F4F6; --surface:#FFFFFF; --surface-2:#E9EDF1;
+  --ink:#121820; --ink-2:#4A5663; --ink-3:#77838F;
+  --line:#D5DCE3; --line-strong:#B9C4CE;
+  --accent:#115E75; --accent-soft:#D8EAF0;
+  --ok:#1F7A4D; --ok-bg:#DCEFE3;
+  --warn:#9A6400; --warn-bg:#F6E8CB;
+  --gap:#A3343A; --gap-bg:#F6DEDF;
+  --font-display:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --font-body:'Inter','Helvetica Neue',Arial,sans-serif;
+  --font-mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1016; --surface:#141C25; --surface-2:#1C2731;
+    --ink:#EAF0F5; --ink-2:#A9B7C4; --ink-3:#7C8B99;
+    --line:#26323D; --line-strong:#374653;
+    --accent:#E9B24C; --accent-soft:#2A2213;
+    --ok:#5FCB92; --ok-bg:#15301F;
+    --warn:#E3B45F; --warn-bg:#33270F;
+    --gap:#EA8086; --gap-bg:#361618;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1016; --surface:#141C25; --surface-2:#1C2731;
+  --ink:#EAF0F5; --ink-2:#A9B7C4; --ink-3:#7C8B99;
+  --line:#26323D; --line-strong:#374653;
+  --accent:#E9B24C; --accent-soft:#2A2213;
+  --ok:#5FCB92; --ok-bg:#15301F;
+  --warn:#E3B45F; --warn-bg:#33270F;
+  --gap:#EA8086; --gap-bg:#361618;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:15px; line-height:1.6;
+  margin:0; -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:1080px; margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:0;
+}
+h1,h2,h3,h4{font-family:var(--font-display); text-wrap:balance; margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.9rem); line-height:1.08; font-weight:700; letter-spacing:-.02em}
+h2{font-size:clamp(1.15rem,2.6vw,1.45rem); font-weight:600; letter-spacing:-.01em}
+h3{font-size:1rem; font-weight:600}
+p{margin:0}
+a{color:var(--accent)}
+.eyebrow{
+  font-family:var(--font-mono); font-size:.7rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+
+/* ---- encabezado ---- */
+header{border-bottom:1px solid var(--line); background:var(--surface)}
+.head-in{display:flex; flex-direction:column; gap:18px; padding-block:34px 28px}
+.lead{font-size:clamp(1rem,2.2vw,1.15rem); color:var(--ink-2); max-width:62ch}
+.lead strong{color:var(--ink); font-weight:600}
+.meta{
+  display:flex; flex-wrap:wrap; gap:8px 10px;
+  font-family:var(--font-mono); font-size:.72rem; color:var(--ink-2);
+}
+.meta span{
+  border:1px solid var(--line-strong); border-radius:2px;
+  padding:4px 8px; background:var(--bg);
+}
+.nav{display:flex; flex-wrap:wrap; gap:6px 18px; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.04em}
+.nav a{text-decoration:none; border-bottom:1px solid var(--line-strong); padding-bottom:2px}
+.nav a:hover{border-color:var(--accent)}
+
+section{padding-block:38px}
+.sec-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:6px}
+.sec-note{font-size:.88rem; color:var(--ink-2); max-width:64ch; margin-bottom:20px}
+
+/* ---- tecnologías ---- */
+.tech{display:grid; gap:14px}
+.tcard{background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:20px 20px 22px; min-width:0}
+.tcard > .eyebrow{display:block; margin-bottom:5px}
+.tcard h3{font-size:1.12rem; letter-spacing:-.01em; margin-bottom:8px}
+.tcard .intro{font-size:.9rem; color:var(--ink-2); margin-bottom:16px; max-width:70ch}
+.tgrid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.tblock{min-width:0}
+.tblock h4{
+  font-family:var(--font-mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:5px; font-weight:500;
+}
+.tblock p{font-size:.86rem; color:var(--ink-2); line-height:1.55}
+.tnote{margin-top:14px; font-size:.82rem; color:var(--ink-3); border-top:1px solid var(--line); padding-top:12px}
+
+/* apilado del laminado */
+.stack{margin-top:18px; border-top:1px solid var(--line); padding-top:16px}
+.stack > .eyebrow{display:block; margin-bottom:10px}
+.layer{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 10px;
+  border-left:3px solid var(--line-strong); padding:7px 0 7px 12px; margin-bottom:3px;
+}
+.layer.glass{border-left-color:var(--accent)}
+.layer.film{border-left-color:var(--ok)}
+.layer.ink{border-left-color:var(--warn)}
+.layer b{font-size:.85rem; font-weight:600}
+.layer span{font-family:var(--font-mono); font-size:.7rem; color:var(--ink-3)}
+.layer em{font-style:normal; font-size:.8rem; color:var(--ink-2); flex-basis:100%}
+
+/* ---- matriz ---- */
+.legend{display:flex; flex-wrap:wrap; gap:14px; font-family:var(--font-mono); font-size:.7rem; color:var(--ink-2)}
+.legend i{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:baseline}
+.i-ok{background:var(--ok)} .i-warn{background:var(--warn)} .i-gap{background:var(--gap)}
+
+.matrix{display:grid; grid-template-columns:168px repeat(4,1fr); gap:6px; align-items:stretch}
+.colhead{
+  font-family:var(--font-mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink-3); padding:0 2px 4px; align-self:end; line-height:1.35;
+}
+.rowhead{
+  display:flex; flex-direction:column; justify-content:center; gap:2px;
+  padding:10px 10px 10px 0; border-right:1px solid var(--line);
+}
+.rowhead b{font-family:var(--font-display); font-size:.86rem; font-weight:600; line-height:1.25}
+.rowhead span{font-family:var(--font-mono); font-size:.64rem; color:var(--ink-3); letter-spacing:.06em}
+.cell{
+  font:inherit; text-align:left; cursor:pointer; min-width:0;
+  background:var(--surface); border:1px solid var(--line); border-radius:3px;
+  padding:11px 11px 12px; display:flex; flex-direction:column; gap:7px;
+  transition:border-color .15s, transform .15s;
+}
+.cell:hover{border-color:var(--line-strong); transform:translateY(-1px)}
+.cell:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.cell[aria-pressed="true"]{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent)}
+.dot{width:9px; height:9px; border-radius:50%; flex:none}
+.cell .top{display:flex; align-items:center; gap:7px}
+.cell .st{font-family:var(--font-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+.cell .nm{font-size:.82rem; font-weight:500; line-height:1.3; color:var(--ink)}
+.cell.ok .dot{background:var(--ok)} .cell.warn .dot{background:var(--warn)} .cell.gap .dot{background:var(--gap)}
+
+.mobile-matrix{display:none}
+.m-group{margin-bottom:22px}
+.m-group > b{font-family:var(--font-display); font-size:.95rem; display:block; margin-bottom:8px}
+.m-list{display:grid; gap:6px}
+.m-list .cell .et{font-family:var(--font-mono); font-size:.6rem; color:var(--accent); letter-spacing:.08em}
+
+/* ---- detalle ---- */
+.detail{
+  margin-top:22px; background:var(--surface); border:1px solid var(--line); border-radius:3px;
+  padding:22px 20px 26px; scroll-margin-top:20px;
+}
+.d-top{display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; margin-bottom:4px}
+.badge{
+  font-family:var(--font-mono); font-size:.64rem; letter-spacing:.09em; text-transform:uppercase;
+  padding:3px 8px; border-radius:2px;
+}
+.badge.ok{background:var(--ok-bg); color:var(--ok)}
+.badge.warn{background:var(--warn-bg); color:var(--warn)}
+.badge.gap{background:var(--gap-bg); color:var(--gap)}
+.d-path{font-family:var(--font-mono); font-size:.68rem; color:var(--ink-3); letter-spacing:.04em}
+.d-title{font-family:var(--font-display); font-size:clamp(1.2rem,3vw,1.6rem); font-weight:700; letter-spacing:-.015em; margin:6px 0 16px}
+.points{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(248px,1fr))}
+.pt{min-width:0}
+.pt h4{
+  font-family:var(--font-mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 5px; font-weight:500;
+}
+.pt p, .pt li{font-size:.875rem; color:var(--ink-2); line-height:1.55}
+.pt ul{margin:0; padding-left:1.05em}
+.pt li{margin-bottom:3px}
+.ext{
+  margin-top:18px; background:var(--surface-2); border-radius:3px; padding:13px 15px;
+  font-size:.85rem; color:var(--ink-2);
+}
+.ext h4{
+  font-family:var(--font-mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-3); margin-bottom:5px; font-weight:500;
+}
+.ext a{font-weight:500}
+.quotes{margin-top:20px; border-top:1px solid var(--line); padding-top:18px; display:grid; gap:14px}
+blockquote{
+  margin:0; padding-left:14px; border-left:2px solid var(--accent);
+  font-size:.9rem; color:var(--ink); line-height:1.55;
+}
+blockquote cite{
+  display:block; margin-top:6px; font-style:normal;
+  font-family:var(--font-mono); font-size:.66rem; color:var(--ink-3); letter-spacing:.04em;
+}
+.missing{
+  margin-top:16px; background:var(--surface-2); border-radius:3px; padding:12px 14px;
+  font-size:.85rem; color:var(--ink-2);
+}
+.missing b{color:var(--ink); font-weight:600}
+
+/* ---- cierre ---- */
+.objs{display:grid; gap:10px; margin-bottom:28px}
+.obj{
+  display:grid; grid-template-columns:34px 1fr; gap:14px;
+  background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:15px 16px;
+}
+.obj .n{
+  font-family:var(--font-mono); font-size:.8rem; color:var(--accent);
+  border-right:1px solid var(--line); display:flex; align-items:flex-start; padding-top:1px;
+}
+.obj h3{font-size:.92rem; margin-bottom:4px; line-height:1.3}
+.obj p{font-size:.86rem; color:var(--ink-2)}
+.reflex{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); margin-top:18px}
+.rcard{background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:18px 18px 20px; min-width:0}
+.rcard .num{font-family:var(--font-mono); font-size:.68rem; color:var(--accent); letter-spacing:.1em}
+.rcard h3{margin:6px 0 8px; line-height:1.3}
+.rcard p{font-size:.875rem; color:var(--ink-2)}
+.personal{
+  margin-top:28px; background:var(--surface); border:1px solid var(--line);
+  border-left:3px solid var(--accent); border-radius:3px; padding:20px 20px 22px;
+}
+.personal .eyebrow{display:block; margin-bottom:8px}
+.personal p{font-size:.92rem; color:var(--ink-2); margin-bottom:12px; max-width:70ch}
+.personal p:last-child{margin-bottom:0}
+.personal strong{color:var(--ink); font-weight:600}
+.pending{
+  margin-top:16px; border-top:1px dashed var(--line-strong); padding-top:14px;
+  font-family:var(--font-mono); font-size:.74rem; color:var(--ink-3); line-height:1.5;
+}
+.closing{
+  margin-top:28px; border-top:2px solid var(--accent); padding-top:18px;
+  font-size:clamp(1rem,2.2vw,1.12rem); color:var(--ink); max-width:66ch; line-height:1.6;
+}
+footer{border-top:1px solid var(--line); background:var(--surface); margin-top:44px}
+.foot-in{padding-block:26px 34px; display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.foot-in h3{font-size:.8rem; margin-bottom:6px}
+.foot-in p, .foot-in li{font-size:.8rem; color:var(--ink-2); line-height:1.5}
+.foot-in ul{margin:0; padding-left:1.05em}
+
+@media (max-width:820px){
+  .desk-matrix{display:none}
+  .mobile-matrix{display:block}
+}
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head-in">
+    <div class="eyebrow">Caso 2 · Grupo 13 · Universidad de los Andes</div>
+    <h1>Mapa del Producto GM</h1>
+    <p class="lead">El techo panorámico que unió <strong>VarioPlus</strong> (vidrio conmutable SPD) y <strong>Fractal</strong> (iluminación por canto) en una sola pieza. Se planearon de 400 a 500 unidades al año durante siete años. Se entregaron <strong>unas 200 en total</strong>. Aquí están las dos tecnologías explicadas, las 16 informaciones que el modelo pide para ese recorrido, y lo que nunca llegó a existir.</p>
+    <nav class="nav">
+      <a href="#tecnologias">Tecnologías</a>
+      <a href="#matriz">Las 16 informaciones</a>
+      <a href="#objetivos">Objetivos del curso</a>
+      <a href="#reflexion">Reflexión</a>
+    </nav>
+    <div class="meta">
+      <span>Producto GM · 2020–2024</span>
+      <span>Entorno de demostración · Manufactura · Equipo · Modelo de negocio</span>
+      <span>4 subdimensiones × 4 etapas</span>
+      <span>3 sesiones con Andrés Sarmiento</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ TECNOLOGÍAS ============ -->
+  <section id="tecnologias">
+    <h2>Las tecnologías</h2>
+    <p class="sec-note">Dos tecnologías independientes que terminaron en el mismo laminado. Una cambia cuánta luz pasa; la otra hace que el vidrio emita un patrón que de día no se ve. Cada una se explica por lo físico, lo eléctrico y lo óptico, porque es en el cruce de esos tres planos donde aparecen sus límites.</p>
+
+    <div class="tech">
+
+      <div class="tcard">
+        <span class="eyebrow">Tecnología 1</span>
+        <h3>VarioPlus · SPD (Suspended Particle Device)</h3>
+        <p class="intro">Un vidrio conmutable que pasa de oscuro a claro cuando recibe voltaje. Llegó maduro al programa: GM lo pidió por su nombre en el requerimiento.</p>
+        <div class="tgrid">
+          <div class="tblock">
+            <h4>Físico</h4>
+            <p>El corazón es un <em>film</em> funcional laminado entre dos vidrios con PVB. El film es una celda: dos láminas de PET que lo sostienen mecánicamente, y entre ellas una emulsión con partículas alargadas en suspensión. El film viene en 45, 60 o 90 micras; el techo de GM usó el de 90. Casi todo ese espesor lo aportan los PET, no la emulsión. Se almacena en salas de humedad controlada, alrededor de 20–23 % de humedad relativa, y se lamina a <strong>100 °C como máximo</strong>: por encima de esa temperatura la emulsión se degrada, cuando el autoclave estándar del vidrio automotriz trabaja a 145 °C.</p>
+          </div>
+          <div class="tblock">
+            <h4>Eléctrico</h4>
+            <p>Sobre la cara interior de cada PET va un recubrimiento de <strong>óxido de indio y estaño (ITO)</strong>, de espesor nanométrico, el mismo material de las pantallas táctiles. Son los dos electrodos transparentes. Al aplicar una diferencia de potencial entre ellos se genera un campo eléctrico que alinea las partículas suspendidas; sin campo, las partículas quedan desordenadas. El consumo de corriente sube con la temperatura, así que la electrónica no se dimensiona para el punto nominal sino para el de mayor consumo, con el vehículo al sol.</p>
+          </div>
+          <div class="tblock">
+            <h4>Óptico</h4>
+            <p>Partículas desordenadas: absorben y dispersan, el vidrio se ve oscuro. Partículas alineadas: dejan pasar. El sistema se mueve dentro del rango de la transmisión de luz y el vidrio sigue siendo transparente en los dos estados — se ve a través incluso apagado. Apagado, el velo llega al 36 % y baja al aplicar voltaje. Para que dure necesita un recubrimiento solar de protección sobre el vidrio: sin él, el SPD se degrada mucho más rápido.</p>
+          </div>
+        </div>
+        <p class="tnote">La emulsión tiene un único dueño de patente, al que AGP pagaba regalías por cada vidrio vendido. El PET lo fabrican terceros, y la calidad de ese PET es lo que separaba a un fabricante de film de otro. Esa fragilidad —ventana de laminación estrecha, proveedor único, precio alto— es la razón por la que el SPD terminó siendo desplazado por el PDLC, que juega con el velo en vez de con la transmisión y cuesta entre 80 y 120 dólares por metro cuadrado frente a 400 o 500.</p>
+      </div>
+
+      <div class="tcard">
+        <span class="eyebrow">Tecnología 2</span>
+        <h3>Fractal · iluminación inyectada por el canto</h3>
+        <p class="intro">El vidrio se ilumina con un patrón que, apagado, es prácticamente invisible. Esa invisibilidad es el diferencial: la generación anterior de la industria usaba serigrafía blanca, que se ve siempre.</p>
+        <div class="tgrid">
+          <div class="tblock">
+            <h4>Físico</h4>
+            <p>Lo que hace el trabajo es una <strong>tinta</strong>. Se imprime en plano sobre el vidrio interno y se hornea hasta quemar todo el componente orgánico; lo que queda es una película de partículas inorgánicas submicrónicas impregnada en el vidrio. La patente describe partículas por debajo de 1 µm, preferiblemente bajo 350 nm, en menos del 10 % en peso, horneadas llevando el vidrio a viscosidades del orden de 10<sup>12,5</sup> a 10<sup>9,5</sup> poise. Es pariente de las fritas negras y plateadas que ya se usan en vidrio automotriz. Aplicada, la tinta cuesta menos de un dólar por metro cuadrado.</p>
+          </div>
+          <div class="tblock">
+            <h4>Eléctrico</h4>
+            <p>Una barra de LED —el <em>lightbar</em>— con drivers que controlan color e intensidad por segmento, pegada al canto del vidrio con poliuretano. Los LED llevan un arreglo de microlentes que enfoca la luz hacia el canto y se montan a medio milímetro o más del borde. La tolerancia de posición es crítica: unos pocos milímetros de desviación en la altura del LED respecto al borde cambian la intensidad de un lado a otro del techo. Y cada LED tiene su propia tolerancia de color, así que un rojo no es idéntico a otro: eso es lo que fija hasta dónde se puede apretar la especificación sin volver imposible la producción.</p>
+          </div>
+          <div class="tblock">
+            <h4>Óptico</h4>
+            <p>El vidrio interno funciona como <strong>guía de onda</strong>. La luz entra por el canto y viaja por reflexión total interna; donde encuentra la capa dispersora, se extrae y sale hacia la cabina. Apagado, el aumento de velo se mantiene por debajo del 6 % según la patente, y GM lo especificó por debajo del 5 %. La intensidad cae hacia el centro del vidrio, porque el vidrio va absorbiendo la luz en el camino, y con la caída viene un corrimiento de color.</p>
+          </div>
+        </div>
+        <p class="tnote">Fractal 2 nace por dos razones distintas. Una mecánica: el lightbar de la primera generación quedaba pegado sin posibilidad de mantenimiento, y un LED fundido comprometía toda la pieza. Otra de propiedad intelectual: la forma de inyección de la generación 1 caía en zona gris frente a patentes de terceros, un riesgo asumible en un programa de 500 piezas al año pero no en uno de 20.000.</p>
+      </div>
+
+      <div class="tcard">
+        <span class="eyebrow">Producto</span>
+        <h3>El techo de GM: las dos en una pieza</h3>
+        <p class="intro">El valor del producto no está en ninguna de las dos tecnologías por separado — cualquier laminador sabía trabajar SPD. Está en meterlas en el mismo laminado y resolver lo que eso rompe.</p>
+        <div class="stack">
+          <span class="eyebrow">Apilado del laminado · reconstruido a partir de la patente y de lo descrito en clase</span>
+          <div class="layer glass"><b>Vidrio exterior</b><span>3,15 mm · superficies 1 y 2</span><em>Más grueso que un techo tradicional (2,1 mm) para pasar las pruebas mecánicas. Lleva el recubrimiento AG3, tres capas de plata, en la superficie 2: rechazo solar de alta calidad y, de paso, la protección que el SPD necesita para no degradarse.</em></div>
+          <div class="layer"><b>Policarbonato laminado</b><span>entre capas de PVB</span><em>Retención en caso de rotura: si el vidrio se parte, la pieza queda sujeta al marco.</em></div>
+          <div class="layer film"><b>Film SPD</b><span>90 µm · PET / ITO / emulsión / ITO / PET</span><em>La celda conmutable. Fija la ventana térmica de todo el proceso: máximo 100 °C en autoclave.</em></div>
+          <div class="layer ink"><b>Vidrio interior con capa dispersora</b><span>2,1 mm · impresión en superficie 3</span><em>La tinta de Fractal, sinterizada en plano antes de curvar y laminar. El vidrio actúa como guía de onda.</em></div>
+          <div class="layer"><b>Lightbar en el canto</b><span>pegado con poliuretano</span><em>LED con microlentes y drivers por segmento. Una vez pegado no se despega: la inspección óptica tiene que ocurrir antes.</em></div>
+        </div>
+        <p class="tnote"><strong>La tensión central del diseño.</strong> La tinta de Fractal se sinteriza a alta temperatura sobre vidrio plano, antes de curvar; el SPD no sobrevive por encima de 100 °C en el autoclave. Las dos operaciones están separadas en el flujo, pero la ventana de laminación del producto completo la fija el SPD, no Fractal. A eso se suma la tolerancia del lightbar contra la curvatura del vidrio: si el vidrio curvó distinto, el LED ya no se apoya igual en el canto y la intensidad cambia de un lado al otro. Esas dos restricciones, juntas, explican buena parte del rendimiento de producción.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ MATRIZ ============ -->
+  <section id="matriz">
+    <div class="sec-head">
+      <h2>Las 16 informaciones</h2>
+      <div class="legend">
+        <span><i class="i-ok"></i>Está</span>
+        <span><i class="i-warn"></i>Está parcial</span>
+        <span><i class="i-gap"></i>Falta</span>
+      </div>
+    </div>
+    <p class="sec-note">Cada celda abre lo que el modelo pide: qué es la información, cómo se ve, un ejemplo de fuera de AGP que muestra el formato, qué preguntas le responde al comité, qué nexos tiene, qué se decide con ella en el hito, y qué mostró el caso con su evidencia. Toque una celda.</p>
+
+    <div class="desk-matrix">
+      <div class="matrix" id="grid"></div>
+    </div>
+    <div class="mobile-matrix" id="mgrid"></div>
+
+    <div class="detail" id="detail" tabindex="-1"></div>
+  </section>
+
+  <!-- ============ OBJETIVOS ============ -->
+  <section id="objetivos">
+    <h2>Los objetivos del curso, vistos desde el parcial</h2>
+    <p class="sec-note">El curso busca que entendamos el vidrio como material de ingeniería y luego apliquemos eso al desarrollo de productos en procesos de innovación tecnológica. El caso del Producto GM toca los cinco objetivos, y en orden.</p>
+    <div class="objs">
+      <div class="obj"><div class="n">1</div><div>
+        <h3>Historia tecnológica del vidrio</h3>
+        <p>El caso es una historia comprimida. El SPD ya tenía programas OEM a principios de los 2000; los primeros los fabricó Pilkington para Mercedes-Benz. AGP entró en 2017 con el McLaren Speedtail, 106 unidades a 2,5 millones de euros cada una. La inyección de luz por el canto también existía años antes de Fractal, con serigrafía blanca. Nada en este techo nació de cero: lo nuevo fue la combinación y el patrón invisible.</p>
+      </div></div>
+      <div class="obj"><div class="n">2</div><div>
+        <h3>El vidrio como material innovador en ingeniería</h3>
+        <p>Las propiedades térmicas, ópticas y mecánicas no son datos de catálogo en este caso: son lo que decide si la pieza se puede hacer. El curvado a temperatura de reblandecimiento, el autoclave limitado a 100 °C por el film, la tinta sinterizada sobre el vidrio, el rechazo solar del recubrimiento de plata, el velo y la transmisión como especificación contractual. Y una restricción de proceso puramente geométrica: si el horno de la planta no alcanza esa curvatura, el producto no es viable ahí.</p>
+      </div></div>
+      <div class="obj"><div class="n">3</div><div>
+        <h3>Vidrio + otros materiales + procesos especiales = producto innovador</h3>
+        <p>El Producto GM es literalmente esa ecuación: vidrio + PVB + policarbonato + film PET/ITO/emulsión + tinta inorgánica sinterizada + LED = un techo que se oscurece y se ilumina. El caso además agrega lo que la ecuación no dice: la combinación es donde está el valor <em>y</em> donde están los problemas. La ventana térmica del producto la impone el componente más frágil, no el más nuevo.</p>
+      </div></div>
+      <div class="obj"><div class="n">4</div><div>
+        <h3>Mercados y tendencias tecnológicas</h3>
+        <p>El caso cierra con el ecosistema completo: un único dueño de la patente de la emulsión cobrando regalías por pieza, el fabricante del film en quiebra, Kuraray entrando por el lado del PVB con una solución menos invisible pero más fácil de laminar, y la presión de los fabricantes chinos empujando a los OEM occidentales hacia el valor agregado. Un vidrio automotriz concentrado en cinco o seis actores grandes.</p>
+      </div></div>
+      <div class="obj"><div class="n">5</div><div>
+        <h3>Innovación tecnológica y casos de estudio</h3>
+        <p>Este objetivo <em>es</em> el parcial. Las 16 celdas de arriba son el modelo de niveles de madurez aplicado a un caso real, con sus etapas y sus dimensiones. Y lo que el ejercicio enseña no es que el modelo sea un trámite, sino que cada celda sin cerrar es una decisión que alguien tomó sin información.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ============ REFLEXIÓN ============ -->
+  <section id="reflexion">
+    <h2>Reflexión de cierre</h2>
+    <p class="sec-note">Qué enseña este caso sobre innovación tecnológica y sobre vidrios inteligentes.</p>
+    <div class="reflex">
+      <div class="rcard">
+        <span class="num">01</span>
+        <h3>El modelo no se rompió: se recorrió a destiempo</h3>
+        <p>Cuando GM llegó, Fractal estaba en «fase media del producto mínimo viable». El cliente pidió prototipos y AGP tuvo que saltar directo a industrialización. Ninguna etapa desapareció; se recorrieron fuera de orden, y cada celda que quedó sin cerrar cobró después. El rendimiento del 20 % en el arranque no fue mala suerte: fue la etapa 3 cobrándose a destiempo.</p>
+      </div>
+      <div class="rcard">
+        <span class="num">02</span>
+        <h3>La información que faltó es la que predijo el final</h3>
+        <p>Tres señales estaban a la vista antes de producir. El modelo financiero quedó abierto en el Gate 3 y nunca llegó al equipo técnico. El supuesto de desperdicio se fijó en 20 % sin validarlo y arrancó en 90 %. El Golden Sample reemplazó la especificación y el plan de mejora nunca arrancó. Un comité con esas tres celdas en amarillo tenía con qué dudar.</p>
+      </div>
+      <div class="rcard">
+        <span class="num">03</span>
+        <h3>En vidrios inteligentes el valor está en la frontera</h3>
+        <p>Nadie tenía ventaja laminando SPD: hay un solo dueño de la emulsión y todos compran el mismo material. Lo que ganó el programa fue <em>combinar</em> SPD con Fractal y asumir el riesgo de esa mezcla. Por eso AGP inventó los gerentes de proyectos tecnológicos: el valor estaba entre los bloques técnicos, y esa frontera no tenía dueño hasta que se le puso uno.</p>
+      </div>
+      <div class="rcard">
+        <span class="num">04</span>
+        <h3>La tecnología diferencial no sobrevive sola</h3>
+        <p>Fractal funcionaba y su materia prima costaba menos de un dólar por metro cuadrado frente a los cien o doscientos del sustituto que hoy domina el mercado. Aun así el programa murió, por una deuda contraída en otra división y por un mercado automotriz que cambió de eje. La tecnología era diferencial; el negocio que la cargaba, no.</p>
+      </div>
+    </div>
+
+    <div class="personal">
+      <span class="eyebrow">Qué sabía al inicio y qué sé al final</span>
+      <p>Antes del curso sabía cómo se hace un vidrio normal: el corte, el curvado, la laminación, los procesos estándar. Había visto estas tecnologías —el techo graduable de un McLaren convertible, que se oscurece y se aclara a voluntad— y sabía que existían, pero <strong>no tenía idea de cómo funcionaban</strong>.</p>
+      <p>Ahora sé que ese techo es una celda de partículas en suspensión entre dos electrodos transparentes de óxido de indio y estaño; que lo que cambia no es el vidrio sino la orientación de unas partículas dentro de una emulsión de pocas decenas de micras; y que la razón por la que esa tecnología está desapareciendo del mercado no es óptica sino térmica: no sobrevive la temperatura del autoclave estándar, y eso obliga a un proceso de laminación distinto y más caro que el de cualquier otro vidrio.</p>
+      <p>Pero el cambio más grande no fue técnico. Al empezar habría dicho que una tecnología así triunfa o fracasa por lo buena que es. El caso muestra que no. Fractal funcionaba, su materia prima costaba menos de un dólar por metro cuadrado frente a los cien del sustituto, y aun así entregó 200 piezas de las 3.500 comprometidas. Lo que faltó no fue física: fue un modelo financiero que quedó abierto, un supuesto de desperdicio que nadie validó y una deuda contraída en otra división de la empresa. <strong>Entender el vidrio como material de ingeniería es necesario y no es suficiente</strong>, y eso no lo sabía al empezar el curso.</p>
+      <div class="pending">Pendiente: el segundo integrante agrega aquí su propio «antes y después».</div>
+    </div>
+
+    <p class="closing">El recorrido del laboratorio al mercado no termina en la primera venta. Termina cuando la empresa que lo recorrió sigue existiendo para sostener los siete años de suministro que firmó.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <h3>Grupo 13</h3>
+      <p>Tomás Gómez Quintana · 202223875<br>Camilo Perea Márquez · 202315238</p>
+      <p style="margin-top:8px">Vidrios Inteligentes: Innovación tecnológica desde la Industria Automotriz · Departamento de Ingeniería Mecánica, Universidad de los Andes.</p>
+    </div>
+    <div>
+      <h3>Fuentes</h3>
+      <ul>
+        <li>Sesión 1 — martes 10 de noviembre de 2026, 11:00–12:20. Fractal 1 y el programa GM.</li>
+        <li>Sesión 2 — jueves 12 de noviembre de 2026, 11:00–12:20. VarioPlus y las tecnologías conmutables.</li>
+        <li>Sesión 3 — martes 17 de noviembre de 2026, 11:00–12:20. El Producto GM.</li>
+        <li><a href="https://patents.google.com/patent/US11421852">US 11,421,852 B2</a> — AGP America SA, concedida el 23 de agosto de 2022. Fuente de los datos de la capa dispersora, la inyección de luz y los umbrales ópticos.</li>
+      </ul>
+      <p style="margin-top:8px">Los minutos de cada cita son estimados a partir de la posición en la grabación de cada sesión de 80 minutos.</p>
+    </div>
+    <div>
+      <h3>Uso de IA generativa · Nivel 4</h3>
+      <p>Claude (Anthropic) ordenó las 16 celdas, redactó los borradores, extrajo los datos de la patente y buscó los ejemplos externos de formato. El equipo verificó cada cita contra la transcripción, corrigió los nombres que la transcripción automática deformó (Saint-Gobain, Pilkington, Kuraray, SkyViera, Gauzy, Fuyao, PPAP), decidió el color de cada celda y escribió la reflexión personal. La declaración completa y la transcripción de los prompts van en el anexo de la guía de entrevista.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ETAPAS = ["E1 · Exploración","E2 · Estructuración","E3 · Validación","E4 · Implementación"];
+
+const DATA = [
+{
+  fila:"Entorno de demostración", escala:"TRL · Tecnología",
+  celdas:[
+   {estado:"ok", nombre:"Demostración en papel", titulo:"Demostración en papel",
+    que:"Mostrar sobre el papel que el techo es posible antes de construir nada: la geometría que manda el cliente, verificada contra lo que la planta puede hacer.",
+    comoSeVe:"El reporte de <em>shape analysis</em>, con control documental de versiones del CAD que llega de GM. Caracterización de la superficie y la curvatura, posición de la banda negra, de los busbars y de la salida de cables, más el análisis de esfuerzos en el curvado.",
+    ejemplo:'La fase 1 de APQP cubre justamente esto: el <em>Design Feasibility Commitment</em>, el compromiso formal de que lo que el cliente pide se puede fabricar. <a href="https://quality-one.com/apqp/" target="_blank" rel="noopener">Quality-One · APQP, las cinco fases</a>.',
+    preguntas:["¿La geometría que pide el cliente se puede procesar con los equipos que existen?","¿En qué horno se curva y en qué línea cabe?","¿Hay que pedirle al cliente que cambie el diseño?"],
+    nexos:"Se alimenta del MRL (qué equipos tiene cada planta) y alimenta al BRL (si el producto es factible, y en qué planta).",
+    hito:"El comité decide si se gasta en laboratorio, y en qué planta del grupo va a vivir el programa.",
+    citas:[{t:"Si la planta en Perú no tenía equipos, pues simplemente el producto no es viable para la planta de Perú. Entonces toca tomar la decisión como empresa de mandarlo a otra planta, o simplemente decirle a GM: toca hacer su vidrio más plano, porque la curvatura que usted pidió no se logra.", f:"Sesión 3 · ~min 16"},
+           {t:"Les voy a mostrar el reporte… fue en diciembre del 2021. Este es el último reporte de lo que llamábamos shape analysis.", f:"Sesión 3 · ~min 16"}]},
+
+   {estado:"ok", nombre:"Laboratorio", titulo:"Laboratorio",
+    que:"Probar en banco, sobre probetas, que las dos tecnologías conviven y que cada una cumple sus parámetros funcionales y de durabilidad.",
+    comoSeVe:"El DVP (Design Verification Plan), una batería de alrededor de 50 ensayos. Funcionales: transmisión de luz contra voltaje, velo, tiempo de respuesta, consumo de corriente a distintas temperaturas. De durabilidad: 90 °C durante 300 horas, cámara de xenón para simular radiación solar, ultravioleta y adherencia. Más probetas de compatibilidad entre tecnologías.",
+    ejemplo:'El formato estándar de la industria automotriz es el DVP&amp;R, que lista cada ensayo con su criterio de aceptación y su resultado. <a href="https://www.6sigma.us/six-sigma-in-focus/dvpr-design-verification-plan-and-report/" target="_blank" rel="noopener">6Sigma.us · DVP&amp;R</a> · <a href="https://relyence.com/help/user-guide/dvp-r-design-verification-plan-and-report.html" target="_blank" rel="noopener">Relyence · estructura del DVP&amp;R</a>.',
+    preguntas:["¿Las dos tecnologías se estorban?","¿Cuánto se degrada el sistema después de N horas de ensayo?","¿Qué hay que sacrificar de una para que la otra funcione?"],
+    nexos:"Es la base de la evidencia y validación del TRL, y condiciona el MRL: la curva de autoclave queda limitada por el SPD.",
+    hito:"El comité decide si el concepto combinado aguanta y si se invierte en prototipo integrado.",
+    citas:[{t:"Yo hacía ensayos en probetas donde colocaba el SPD con vidrio con recubrimiento y vidrio sin recubrimiento. Veía que el vidrio que no tenía recubrimiento se me degradaba más, perdía sus propiedades más rápido.", f:"Sesión 3 · ~min 26"},
+           {t:"Eso puede ser una lista de 50 ensayos… hay un paquete que son funcionales y hay otro paquete que son de durabilidad.", f:"Sesión 2 · ~min 58"}]},
+
+   {estado:"ok", nombre:"Entorno relevante", titulo:"Entorno relevante",
+    que:"El techo deja el banco y se monta sobre el vehículo real, con el cliente mirando.",
+    comoSeVe:"La fase de preserie: se envían unos 10 vidrios con la posición de los pines y los sellos, GM los monta en el carro, e ingenieros de desarrollo y de calidad de AGP acompañan el montaje. De ahí salen los ajustes. No había chasis físico en AGP: todo se validó con CAD y montaje digital con tolerancias. Después, el PPAP y el Golden Sample.",
+    ejemplo:'El PPAP es el paquete con el que un proveedor automotriz pide permiso para producir en serie: 18 elementos, del plan de control a las piezas patrón. <a href="https://quality-one.com/ppap/" target="_blank" rel="noopener">Quality-One · PPAP</a> · <a href="https://kaizen.com/es/insights-es/proceso-aprobacion-piezas-produccion/" target="_blank" rel="noopener">Kaizen Institute · PPAP en español</a>.',
+    preguntas:["¿La pieza encaja en el vehículo?","¿Qué aparece aquí que no apareció en laboratorio?","¿El cliente aprueba el proceso para producir?"],
+    nexos:"Depende del MRL (las piezas de preserie salen de la línea real) y desemboca en el BRL: sin PPAP no se factura.",
+    hito:"El comité decide si lo validado justifica implementar.",
+    citas:[{t:"Se envían 10 vidrios con lo que nos pidieron, la posición de los pines, y ellos van a montar esos vidrios en el carro. Muchas veces el ingeniero de desarrollo y los ingenieros de calidad participan en esos procesos de montaje.", f:"Sesión 3 · ~min 31"},
+           {t:"Un chasis como tal no lo entregan, pero un buen 3D con tolerancias, montaje digital, es bastante confiable hoy en día.", f:"Sesión 3 · ~min 31"}]},
+
+   {estado:"gap", nombre:"Entorno operativo", titulo:"Entorno operativo",
+    que:"El techo funcionando en vehículos en manos del usuario final, con datos de campo volviendo al fabricante.",
+    comoSeVe:"Reportes de garantía, reclamos, devoluciones, análisis de falla de campo, y el plan de mejora continua que cierra la brecha contra la especificación original.",
+    ejemplo:'El formato con el que la industria procesa una falla de campo es el 8D: ocho disciplinas, de la contención a la acción preventiva. <a href="https://quality-one.com/8d/" target="_blank" rel="noopener">Quality-One · 8D</a> · <a href="https://quality-one.com/wp-content/uploads/2016/08/8D-Problem-Solving-Checklist.pdf" target="_blank" rel="noopener">lista de verificación 8D (PDF)</a>.',
+    preguntas:["¿Cómo envejece el producto en la calle?","¿Qué falla reporta el usuario?","¿Se cerró la desviación del Golden Sample?"],
+    nexos:"Debería alimentar al MRL (mejora de proceso) y al BRL (costo de garantía). Aquí no alimentó nada.",
+    hito:"El comité decide si el producto confirma el mercado y si se expande. Esa decisión nunca se tomó.",
+    citas:[{t:"Se alcanzaron a entregar unas 200 partes. Este programa estaba planeado para 400 a 500 partes por 7 años… alcanzó a producir medio año.", f:"Sesión 3 · ~min 43"},
+           {t:"Arrancamos con el Golden Sample, ellos aceptaron arrancar con el Golden Sample. Existía una promesa, un proyecto de mejora continua, pero ese proyecto realmente nunca llegó a arrancar en su totalidad.", f:"Sesión 3 · ~min 35"}],
+    falta:"Esta información no existe, y no por descuido: la etapa nunca se completó. El programa se cerró cuando AGP cerró actividades en Perú, con unas 200 de las ~3.500 piezas comprometidas entregadas. Las piezas producidas quedaron en el stock de GM. Es la única celda roja del grupo, y es la consecuencia acumulada de las tres amarillas."}
+  ]
+},
+{
+  fila:"Manufactura", escala:"MRL · Otros IRLs",
+  celdas:[
+   {estado:"ok", nombre:"Conceptos de manufactura", titulo:"Conceptos de manufactura",
+    que:"La primera idea de cómo se fabrica la pieza: qué procesos existen, cuáles hay que inventar y en qué planta cabe.",
+    comoSeVe:"Ruta de proceso preliminar sobre el flujo estándar del vidrio (corte, pulido, serigrafía, curvado, laminación, autoclave), con la verificación de qué equipo de la línea admite ese tamaño y qué horno alcanza esa curvatura. Decisión de hacer o comprar para el film SPD, los LED y la electrónica.",
+    ejemplo:'El diagrama de flujo de proceso es el primer entregable de manufactura dentro de APQP, antes del AMEF y del plan de control. <a href="https://www.rockwellautomation.com/content/plex/global/en/knowledge-articles/qms/guide-advanced-product-quality-planning-apqp.html" target="_blank" rel="noopener">Rockwell / Plex · guía de APQP y sus entregables</a>.',
+    preguntas:["¿Esto se puede fabricar con lo que hay?","¿Qué operación no existe todavía?","¿Qué se compra afuera?"],
+    nexos:"Nace del shape analysis del TRL y condiciona el BRL: define la planta y con ella la estructura de costos.",
+    hito:"El comité decide que la pieza es fabricable y no solo dibujable.",
+    citas:[{t:"Yo comienzo a verificar, de acuerdo a lo que me pide GM, dónde lo puedo procesar y cómo lo puedo procesar, y si lo puedo procesar tal cual me lo están pidiendo o si tengo que hacer algún ajuste.", f:"Sesión 3 · ~min 14"},
+           {t:"Se hizo el vidrio externo mucho más grueso que uno tradicional: se aumentó el espesor de 2.1 a 3.15, y se laminó con un pedacito de policarbonato en el medio.", f:"Sesión 1 · ~min 14"}]},
+
+   {estado:"ok", nombre:"Competencias y capacidad", titulo:"Definición de competencias y capacidad de producción",
+    que:"Declarar explícitamente qué sabe hacer la empresa, qué no, y con qué equipos va a producir.",
+    comoSeVe:"Mapa de procesos con capacidad estimada y plan de inversión en CAPEX. En AGP tomó una forma propia: el equipo de <em>R&amp;D Engineering</em>, que diseñaba las máquinas porque el mercado no las vendía, y entregaba a planta un paquete industrial completo.",
+    ejemplo:'El <em>MRL Deskbook</em> del Departamento de Defensa de Estados Unidos define diez niveles de madurez de manufactura con criterios por nivel, incluidos personal, instalaciones y capacidad. Es el equivalente formal de esta celda. <a href="https://apps.dtic.mil/sti/tr/pdf/ADA510027.pdf" target="_blank" rel="noopener">MRL Deskbook, DoD (PDF)</a>.',
+    preguntas:["¿Con qué máquinas se produce esto?","¿Qué competencia hay que construir desde cero?","¿Cuánto cuesta instalarla?"],
+    nexos:"Se cruza con el TMRL: las competencias que faltaban (medición de luz y color, electrónica) se cubrieron contratando juniors y pagando consultoría externa.",
+    hito:"El comité decide si la empresa tiene con qué, o si hay que comprarlo.",
+    citas:[{t:"Era un equipo que se llamaba R&amp;D Engineering, el equipo encargado de desarrollar las máquinas para poder producir las tecnologías. Yo te entrego cómo hacer el producto, te entrego las máquinas para poder hacerlo, porque muchas máquinas no se conseguían industrialmente.", f:"Sesión 3 · ~min 57"},
+           {t:"Existen varias empresas comerciales que te venden los hornos de curvado, pero no llegan a las tolerancias, no llegan a las curvaturas que se requerían. Ahí es donde AGP comenzó a desarrollar sus propios hornos.", f:"Sesión 3 · ~min 57"}]},
+
+   {estado:"ok", nombre:"Producción en entorno relevante", titulo:"Producción en entorno relevante de manufactura",
+    que:"Producir en la línea real, no en el laboratorio, y medir qué sale.",
+    comoSeVe:"AMEF de proceso, plan de control y la corrida de preserie con su tasa de rechazo. El flujo del vidrio tuvo que modificarse: se insertaron salas de medición de iluminación —preparación, color y cuarto oscuro— en la inspección final, después del autoclave y antes de pegar los lightbars, porque una vez pegados con poliuretano ya no se despegan.",
+    ejemplo:'El AMEF de proceso identifica, por operación, qué puede salir mal y con qué control se detecta; el plan de control traduce eso en qué se mide y cada cuánto. <a href="https://quality-one.com/pfmea/" target="_blank" rel="noopener">Quality-One · PFMEA</a>.',
+    preguntas:["¿Cuánto se bota y por qué?","¿El proceso es repetible entre piezas?","¿El cliente aprueba la línea?"],
+    nexos:"Alimenta el entorno relevante del TRL y golpea directo el modelo financiero: el film solo cuesta cerca de mil dólares por techo.",
+    hito:"El comité decide si la línea puede sostener la producción comprometida.",
+    citas:[{t:"Arrancamos con yields del 20 %, muy bajo. Para producir, de 10 botábamos 8, también con el costo que el vidrio ya traía.", f:"Sesión 3 · ~min 38"},
+           {t:"Teníamos unas salas especiales de medición de iluminación, que eso no es común en la fabricación de vidrio automotriz. Una zona de preparación, una de medición de color, una de cuarto oscuro.", f:"Sesión 1 · ~min 77"}]},
+
+   {estado:"ok", nombre:"Capacidad y rendimiento", titulo:"Capacidad y rendimiento",
+    que:"Lo que la línea realmente entrega en serie, frente a lo que se estimó.",
+    comoSeVe:"Indicadores de producción: rendimiento de primera pasada, desperdicio, costo real por pieza, piezas por campaña. En este caso hay que leer dos rendimientos a la vez, el de volumen y el de costo, porque botar una pieza no cuesta lo mismo aquí que en un vidrio tradicional.",
+    ejemplo:'El OEE descompone el rendimiento de una línea en disponibilidad, desempeño y calidad, y permite separar «cuántas piezas perdí» de «cuánto me costaron». <a href="https://leanproduction.com/oee" target="_blank" rel="noopener">Lean Production · OEE</a> · <a href="https://oee.com/oee-topics-overview" target="_blank" rel="noopener">OEE.com</a>.',
+    preguntas:["¿Cuánto produce realmente la línea?","¿Qué tan lejos quedó de lo estimado?","¿Se amplía capacidad, se mejora el proceso o se deja así?"],
+    nexos:"Es la prueba de fuego del supuesto de desperdicio del modelo financiero, y la razón por la que se cancelaron otros programas de Fractal.",
+    hito:"El comité decide si el producto confirma el negocio. Aquí decidió que no.",
+    citas:[{t:"Arrancamos con un 20 % de yield, llegamos a un 50 %. En Volvo nosotros nunca logramos pasar del 30 %, y los volúmenes eran mayores.", f:"Sesión 3 · ~min 62"},
+           {t:"Desde que teníamos el producto mínimo viable hasta producción: más o menos año y medio. Fueron campañas de producción de dos meses, dos o tres campañas.", f:"Sesión 3 · ~min 41"}]}
+  ]
+},
+{
+  fila:"Equipo", escala:"TMRL · Otros IRLs",
+  celdas:[
+   {estado:"warn", nombre:"Equipo fundador", titulo:"Equipo fundador",
+    que:"Quiénes arrancaron el programa y de dónde salieron.",
+    comoSeVe:"Acta de constitución del proyecto, organigrama inicial con dedicaciones, matriz de responsabilidades.",
+    ejemplo:'El acta de constitución es el documento que nombra al responsable, el alcance y los recursos antes de que el proyecto exista formalmente. <a href="https://www.pmi.org/blog/project-charter" target="_blank" rel="noopener">PMI · qué contiene un project charter</a>.',
+    preguntas:["¿Quién es el dueño del programa?","¿Qué capacidad falta en el grupo inicial?","¿Quién responde frente al cliente?"],
+    nexos:"Debería conectar con el BRL (quién hizo la propuesta a GM) y con el TRL (quién llevaba Fractal).",
+    hito:"El comité decide si hay equipo para sostener el proyecto.",
+    citas:[{t:"Ya había un esfuerzo comercial muy grande: el representante comercial de Estados Unidos constantemente estaba haciendo lobbying con el equipo de GM para buscar qué proyectos había, dónde AGP podía participar.", f:"Sesión 1 · ~min 36"},
+           {t:"Nosotros teníamos los bloques tecnológicos: el grupo que trabajaba VarioPlus, otro los recubrimientos, otro los temas de Fractal, otro los temas de curvado.", f:"Sesión 3 · ~min 22"}],
+    falta:"Sabemos que existía una estructura por bloques tecnológicos y un representante comercial en Estados Unidos haciendo el acercamiento, pero <b>no se nombró quién arrancó el programa GM, cuándo se formalizó ni con qué dedicaciones</b>. No hay acta de arranque ni organigrama inicial en el relato."},
+
+   {estado:"ok", nombre:"Equipo de I+D", titulo:"Equipo de I+D",
+    que:"El equipo técnico que desarrolla la tecnología, y cómo se consiguieron las competencias que no existían en casa.",
+    comoSeVe:"Organigrama del equipo por bloque tecnológico y matriz de competencias con su plan de cierre. El modelo de AGP: contratar perfiles junior con ganas de aprender y pagarles consultoría especializada en el exterior, en vez de contratar expertos de tiempo completo que el proyecto no podía pagar.",
+    ejemplo:'La matriz de competencias cruza personas contra habilidades y marca el nivel de cada una: es el formato con el que se ve, de un vistazo, qué capacidad falta. <a href="https://www.ag5.com/templates/industrial-engineering-skills-matrix-template" target="_blank" rel="noopener">AG5 · plantilla de matriz de competencias en ingeniería industrial</a>.',
+    preguntas:["¿Qué competencias faltan y cómo se cubren?","¿Cuánta gente sostiene la tecnología?","¿Se contrata, se forma o se subcontrata?"],
+    nexos:"Determina qué se puede desarrollar en el TRL y aparece como OPEX en el modelo financiero.",
+    hito:"El comité decide si el equipo puede llevar la tecnología al siguiente nivel.",
+    citas:[{t:"El equipo de Fractal eran en un momento unas 10 personas, había otro equipo de VarioPlus también con unas 10 personas.", f:"Sesión 2 · ~min 76"},
+           {t:"Lo que terminamos haciendo fue gente muy pila con muchas ganas de aprender… y contratábamos consultoría especializada en Alemania, en Estados Unidos, de temas de iluminación automotriz, y le poníamos estos ingenieros junior bien pegados para que absorbieran.", f:"Sesión 1 · ~min 66"},
+           {t:"Lo que no teníamos mucho era competencia a nivel de medición de luz y de color. Eso nos tocó casi que desarrollarlo desde cero.", f:"Sesión 1 · ~min 66"}]},
+
+   {estado:"ok", nombre:"Plan de recursos humanos", titulo:"Plan de recursos humanos",
+    que:"Cómo se organiza la gente cuando la tecnología pasa a ser producto y después a ser línea de producción.",
+    comoSeVe:"Plan de transferencia de tecnología y perfiles para planta, con su matriz de formación. En AGP tomó una forma particular: equipos transversales de gerentes de proyectos técnicos, que entendían tanto las tecnologías como la fabricación del vidrio, iban de avanzada probando combinaciones sobre un «techo típico» definido, y decidían qué se priorizaba.",
+    ejemplo:'La matriz de formación es el instrumento con el que una planta sabe quién puede operar qué y quién sigue en entrenamiento, indispensable cuando aparece una operación que antes no existía. <a href="https://www.l2l.com/blog/training-matrix-example" target="_blank" rel="noopener">L2L · ejemplo de matriz de formación en planta</a>.',
+    preguntas:["¿Quién traduce entre el que desarrolla y el que produce?","¿Quién decide cuando dos tecnologías se estorban?","¿Cómo se entrena al operario en una operación que no existía?"],
+    nexos:"Es la bisagra entre el TRL y el MRL. Sin ella, el salto de conocimiento entre el bloque técnico y el gerente de producto final es demasiado grande.",
+    hito:"El comité decide si la organización puede recibir lo que I+D va a soltar.",
+    citas:[{t:"Lo que también generamos fueron grupos transversales, más tipo gerentes de proyectos técnicos, que entendían el mundo de las tecnologías y el mundo de la fabricación de vidrio, y eran capaces de coger la madurez de diferentes tecnologías e integrarlo en productos.", f:"Sesión 3 · ~min 53"},
+           {t:"Los de allá no se entendían con los de acá, entonces se la pasaban peleando en reuniones. Al final se fue creando un equipo, creamos canales de comunicación para reducir el gap de conocimiento.", f:"Sesión 3 · ~min 53"},
+           {t:"Yo les quiero entregar, ellos quieren recibir la cosa ya hecha, bien desmenuzada, que no tengan que sufrir. Y aquí yo les quiero rápidamente sacar tecnologías y lanzarlas. Entonces ahí siempre hay mucho conflicto.", f:"Sesión 3 · ~min 55"}]},
+
+   {estado:"warn", nombre:"Acuerdos formalizados", titulo:"Acuerdos formalizados",
+    que:"Lo que queda firmado con terceros y con el propio equipo al cerrar el programa.",
+    comoSeVe:"Contratos de suministro, acuerdos de confidencialidad, convenios de transferencia y acuerdos con los proveedores clave.",
+    ejemplo:'El modelo IRL de KTH —el mismo del que salen las escalas de este curso— define en su escala de equipo qué cuenta como acuerdo formalizado en cada nivel, desde el entendimiento verbal hasta el contrato firmado. <a href="https://frq.gouv.qc.ca/app/uploads/2025/02/kth-irl-user-guide_va.pdf" target="_blank" rel="noopener">KTH Innovation Readiness Level · guía de usuario (PDF)</a>.',
+    preguntas:["¿Qué compromisos sobreviven al programa?","¿Quién responde por garantía y repuesto?","¿Qué pasa con el conocimiento cuando la gente se va?"],
+    nexos:"Se solapa con los contratos comerciales del BRL y con la gestión de propiedad intelectual.",
+    hito:"El comité decide si la empresa queda cubierta.",
+    citas:[{t:"Uno tiene que asegurarles a ellos la producción por 7 años como parte del contrato, y después de esa producción por 7 años uno tiene que estar dispuesto a fabricar lo que es el mercado de reposición.", f:"Sesión 3 · ~min 74"},
+           {t:"Sí hubo multas, pero también hubo una discusión comercial, porque también les subíamos el precio y nos aceptaban. Entonces teníamos la multa ahí en medio.", f:"Sesión 3 · ~min 66"}],
+    falta:"Están los compromisos con el cliente —siete años de suministro, mercado de reposición, multas por incumplimiento— y las relaciones con el proveedor italiano de tinta y con el fabricante de la electrónica. Pero <b>no hay nada sobre acuerdos con el propio equipo</b>: qué pasó con la gente y con el conocimiento cuando se cerró la planta de Perú. Es la celda que más valdría la pena cerrar con una pregunta más."}
+  ]
+},
+{
+  fila:"Modelo de negocio", escala:"BRL · Negocio",
+  celdas:[
+   {estado:"ok", nombre:"NABC y cadena de valor", titulo:"NABC, cadena de valor y customer journey",
+    que:"Por qué este producto para este cliente, y quién pone cada pieza del valor.",
+    comoSeVe:"NABC (necesidad, enfoque, beneficio, competencia), cadena de valor y mapa del recorrido del cliente. Aquí hay dos intereses que coinciden: GM quería diferenciar un vehículo de posicionamiento, y AGP quería una plataforma para industrializar Fractal.",
+    ejemplo:'El NABC viene del SRI International, donde lo formuló Curtis Carlson como la forma mínima de enunciar una propuesta de valor. <a href="https://www.rolandberger.com/en/Insights/Publications/Curtis-Carlson-on-how-to-seed-serial-innovation.html" target="_blank" rel="noopener">Curtis Carlson sobre el NABC</a>. Para el recorrido del cliente, el formato estándar es el mapa de journey: <a href="https://www.nngroup.com/articles/journey-mapping-101/" target="_blank" rel="noopener">Nielsen Norman Group · Journey Mapping 101</a>.',
+    preguntas:["¿Qué necesita el cliente y por qué nosotros?","¿Quién pone cada parte de la pieza?","¿Por qué este programa y no otro?"],
+    nexos:"Define el objeto del TRL y el alcance del MRL. Entre Fractal y los LED embebidos se escogió Fractal por menor riesgo industrial.",
+    hito:"El comité decide si vale la pena perseguir el programa.",
+    citas:[{t:"Es un vehículo de muy bajo volumen, de muy alto precio; para el mercado americano es el vehículo más costoso que tienen, con alto nivel de personalización. Su objetivo era posicionar la marca, el nombre del carro.", f:"Sesión 3 · ~min 6"},
+           {t:"Lo que queríamos era tener una plataforma con la cual pudiéramos desarrollar la tecnología… Fractal mostraba el menor riesgo a nivel industrial.", f:"Sesión 3 · ~min 9"},
+           {t:"Nosotros le dijimos: ustedes quieren algún tipo de iluminación ambiental, tienen la opción de una inyección en el borde, una indirecta o una directa hacia la cabina. Vamos a tratar de empujarlos por la solución A, que es la que nos interesa más.", f:"Sesión 1 · ~min 40"}]},
+
+   {estado:"ok", nombre:"BMC y modelo financiero", titulo:"BMC, modelo financiero y supuestos",
+    que:"Cómo se cobra, cuánto cuesta desarrollar y qué supuestos sostienen la cuenta.",
+    comoSeVe:"Business Model Canvas, modelo financiero y registro de supuestos. En automotriz la pieza central es el ED&amp;T, lo que el cliente paga por desarrollar <em>el producto</em>, que no es lo mismo que desarrollar <em>la tecnología</em>: el CAPEX no lo paga el cliente, se amortiza dentro del precio de la pieza.",
+    ejemplo:'El Business Model Canvas de Strategyzer es el formato de una página con el que se revisa si las nueve piezas del negocio encajan. <a href="https://www.strategyzer.com/the-business-model-canvas-1" target="_blank" rel="noopener">Strategyzer · el lienzo oficial</a> · <a href="https://www.cs.princeton.edu/courses/archive/spring18/cos448/the-business-model-canvas.pdf" target="_blank" rel="noopener">versión imprimible (PDF)</a>.',
+    preguntas:["¿Cuánto cuesta desarrollar y quién lo paga?","¿Cómo se recupera la inversión con 500 piezas al año?","¿Cuál es el supuesto más frágil?"],
+    nexos:"Se alimenta del MRL (el supuesto de desperdicio sale de ahí) y del TMRL (el equipo es OPEX).",
+    hito:"El comité decide si el negocio cierra y se pasa a validación.",
+    citas:[{t:"Terminamos invirtiendo en CAPEX más o menos 330 mil dólares, y en OPEX otros 300 mil. El desarrollo de este proyecto le costó a AGP 600 mil, 700 mil dólares. La idea era amortizarlo no solo con GM, porque ese volumen era muy pequeño.", f:"Sesión 1 · ~min 56"},
+           {t:"Se le preguntan al ingeniero: ¿cuánto yield de este proceso? Ellos dicen, no, yo creo que se va a perder el 20 %. Resulta que cuando se comienza a fabricar, se comienza con un scrap del 90 % los primeros meses.", f:"Sesión 2 · ~min 44"},
+           {t:"Una cosa es desarrollar la tecnología y otra es desarrollar el producto.", f:"Sesión 3 · ~min 12"}]},
+
+   {estado:"warn", nombre:"Convenios piloto y modelo ajustado", titulo:"Convenios piloto y modelo financiero ajustado",
+    que:"Lo que se firma antes de la serie y cómo cambia la cuenta cuando ya hay costos reales.",
+    comoSeVe:"Acuerdo de desarrollo o carta de intención, business case revisado y análisis competitivo. En el Gate 3 se cerraron el concepto, la especificación de producto y la revisión del business case contra la competencia, con su análisis DOFA.",
+    ejemplo:'El modelo Stage-Gate define qué entregables deben estar completos para cruzar cada puerta, y el modelo financiero actualizado es uno de ellos. <a href="https://stage-gate.com/blog/the-stage-gate-model-an-overview" target="_blank" rel="noopener">Stage-Gate · el modelo y sus puertas</a>.',
+    preguntas:["¿Qué cambió en la cuenta con costos reales?","¿El caso de negocio sigue en pie?","¿Quién más va a comprar esta tecnología?"],
+    nexos:"Depende del rendimiento real del MRL y condiciona los contratos del BRL.",
+    hito:"El comité decide si implementar.",
+    citas:[{t:"El slide de financial model, ese está abierto. Nunca llegó a nosotros como parte técnica, creo que nos lo saltamos en ese momento.", f:"Sesión 1 · ~min 52"},
+           {t:"No teníamos una buena rentabilidad del producto, pero la forma de solucionarlo es que le subimos un poco más el precio y GM lo terminó aceptando. Al principio se le estaba cobrando X y después se le subió un 20 o 30 %.", f:"Sesión 1 · ~min 52"}],
+    falta:"El Gate 3 se cerró por el lado técnico y comercial, pero <b>el modelo financiero ajustado quedó explícitamente abierto</b> y nunca llegó al equipo técnico. Tampoco se hizo nunca el balance de Fractal 1. Es una celda amarilla por confesión del propio entrevistado, no por falta de respuesta."},
+
+   {estado:"ok", nombre:"Contratos comerciales", titulo:"Contratos comerciales con aliados clave",
+    que:"Lo que sostiene el producto en el mercado: con el cliente, con los dueños de la tecnología y con los proveedores.",
+    comoSeVe:"Contrato de suministro con volumen, precio y penalizaciones; acuerdo de licencia con el dueño de la patente del film; contratos con el proveedor de tinta y el de electrónica.",
+    ejemplo:'El manual de la OMPI sobre licenciamiento de tecnología explica cómo se estructura un acuerdo de licencia y cómo se fija una regalía por unidad, que es exactamente la figura bajo la que AGP podía laminar SPD. <a href="https://tind.wipo.int/record/28675/files/wipo_pub_906.pdf" target="_blank" rel="noopener">OMPI · Exchanging Value: Negotiating Technology Licensing Agreements (PDF)</a>.',
+    preguntas:["¿Qué queda comprometido y por cuánto tiempo?","¿Quién más compró la tecnología?","¿Qué pasa si una de las partes desaparece?"],
+    nexos:"Cierra el recorrido y se apoya en la propiedad intelectual: el SPD se laminaba bajo licencia pagada, con regalías por pieza.",
+    hito:"El comité decide si la venta confirma el mercado y si se expande a otros segmentos.",
+    citas:[{t:"El SPD nosotros lo podíamos laminar porque estábamos oficialmente autorizados por el dueño de la patente. Por el lado del SPD, cero problema de patente, porque estábamos pagando la licencia por cada vidrio que vendíamos.", f:"Sesión 2 · ~min 78"},
+           {t:"El crecimiento fue tan acelerado, fue un crecimiento bajo deuda. Los clientes prometían volumen… prometían 250 mil carros por año y terminaron produciendo una fracción.", f:"Sesión 3 · ~min 70"},
+           {t:"Esta apuesta que duró 10 años desafortunadamente cerró, y entre eso el proyecto de GM que estaba metido ahí.", f:"Sesión 3 · ~min 72"}]}
+  ]
+}];
+
+const ESTADO_TXT = {ok:"Está", warn:"Parcial", gap:"Falta"};
+
+const grid = document.getElementById('grid');
+const mgrid = document.getElementById('mgrid');
+const detail = document.getElementById('detail');
+
+let html = '<div class="colhead"></div>';
+ETAPAS.forEach(e => html += `<div class="colhead">${e}</div>`);
+DATA.forEach((row, ri) => {
+  html += `<div class="rowhead"><b>${row.fila}</b><span>${row.escala}</span></div>`;
+  row.celdas.forEach((c, ci) => {
+    html += `<button class="cell ${c.estado}" data-r="${ri}" data-c="${ci}" aria-pressed="false">
+      <span class="top"><span class="dot"></span><span class="st">${ESTADO_TXT[c.estado]}</span></span>
+      <span class="nm">${c.nombre}</span></button>`;
+  });
+});
+grid.innerHTML = html;
+
+let mhtml = '';
+DATA.forEach((row, ri) => {
+  mhtml += `<div class="m-group"><b>${row.fila}</b><div class="m-list">`;
+  row.celdas.forEach((c, ci) => {
+    mhtml += `<button class="cell ${c.estado}" data-r="${ri}" data-c="${ci}" aria-pressed="false">
+      <span class="top"><span class="dot"></span><span class="et">${ETAPAS[ci]}</span><span class="st">${ESTADO_TXT[c.estado]}</span></span>
+      <span class="nm">${c.nombre}</span></button>`;
+  });
+  mhtml += '</div></div>';
+});
+mgrid.innerHTML = mhtml;
+
+function render(ri, ci, scroll){
+  const row = DATA[ri], c = row.celdas[ci];
+  const q = c.citas.map(x => `<blockquote>«${x.t}»<cite>${x.f}</cite></blockquote>`).join('');
+  detail.innerHTML = `
+    <div class="d-top">
+      <span class="badge ${c.estado}">${ESTADO_TXT[c.estado]}</span>
+      <span class="d-path">${row.escala} &nbsp;·&nbsp; ${ETAPAS[ci]}</span>
+    </div>
+    <div class="d-title">${c.titulo}</div>
+    <div class="points">
+      <div class="pt"><h4>Qué es</h4><p>${c.que}</p></div>
+      <div class="pt"><h4>Cómo se ve en el caso</h4><p>${c.comoSeVe}</p></div>
+      <div class="pt"><h4>Qué preguntas responde</h4><ul>${c.preguntas.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+      <div class="pt"><h4>Qué nexos tiene</h4><p>${c.nexos}</p></div>
+      <div class="pt"><h4>Cómo sirve en el hito</h4><p>${c.hito}</p></div>
+    </div>
+    <div class="ext"><h4>Ejemplo de formato, ajeno a AGP</h4><p>${c.ejemplo}</p></div>
+    <div class="quotes"><div class="pt"><h4>Qué mostró el Producto GM</h4></div>${q}</div>
+    ${c.falta ? `<div class="missing"><b>Lo que falta.</b> ${c.falta}</div>` : ''}`;
+  document.querySelectorAll('.cell').forEach(b => {
+    b.setAttribute('aria-pressed', (b.dataset.r == ri && b.dataset.c == ci) ? 'true' : 'false');
+  });
+  if (scroll) detail.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+document.querySelectorAll('.cell').forEach(b => {
+  b.addEventListener('click', () => render(+b.dataset.r, +b.dataset.c, true));
+});
+
+render(0, 0, false);
+</script>
+</body>
+</html>
