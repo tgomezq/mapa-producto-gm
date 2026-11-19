@@ -355,7 +355,7 @@ footer{border-top:1px solid var(--line); background:var(--surface); margin-top:4
         <span><i class="i-gap"></i>Falta</span>
       </div>
     </div>
-    <p class="sec-note">Cada celda abre lo que el modelo pide: qué es la información, cómo se ve, un ejemplo de fuera de AGP que muestra el formato, qué preguntas le responde al comité, qué nexos tiene, qué se decide con ella en el hito, y qué mostró el caso con su evidencia. Toque una celda.</p>
+    <p class="sec-note">Cada celda abre lo que el modelo pide: qué es la información, cómo se ve, un ejemplo de fuera de AGP que muestra el formato, qué preguntas le responde al comité, qué nexos tiene, qué se decide con ella en el hito, y qué mostró el caso con su evidencia. Toque una celda. <strong>El color describe el caso, no nuestra entrevista:</strong> marca hasta dónde llegó el Producto GM en cada información, y toda celda que no esté en verde explica con su evidencia por qué el recorrido no fue más lejos.</p>
 
     <div class="desk-matrix">
       <div class="matrix" id="grid"></div>
@@ -406,7 +406,7 @@ footer{border-top:1px solid var(--line); background:var(--surface); margin-top:4
       <div class="rcard">
         <span class="num">02</span>
         <h3>La información que faltó es la que predijo el final</h3>
-        <p>Tres señales estaban a la vista antes de producir. El modelo financiero quedó abierto en el Gate 3 y nunca llegó al equipo técnico. El supuesto de desperdicio se fijó en 20 % sin validarlo y arrancó en 90 %. El Golden Sample reemplazó la especificación y el plan de mejora nunca arrancó. Un comité con esas tres celdas en amarillo tenía con qué dudar.</p>
+        <p>Tres señales estaban a la vista antes de producir. El modelo financiero quedó abierto en el Gate 3 y nunca llegó al equipo técnico. El supuesto de desperdicio se fijó en 20 % sin validarlo y arrancó en 90 %. El Golden Sample reemplazó la especificación y el plan de mejora nunca arrancó. Un comité con esas tres señales sobre la mesa tenía con qué dudar.</p>
       </div>
       <div class="rcard">
         <span class="num">03</span>
@@ -442,17 +442,19 @@ footer{border-top:1px solid var(--line); background:var(--surface); margin-top:4
     </div>
     <div>
       <h3>Fuentes</h3>
+      <p style="margin-bottom:6px">Apuntes de clase tomados por el equipo en las cuatro sesiones del caso:</p>
       <ul>
         <li>Sesión 1 — martes 10 de noviembre de 2026, 11:00–12:20. Fractal 1 y el programa GM.</li>
         <li>Sesión 2 — jueves 12 de noviembre de 2026, 11:00–12:20. VarioPlus y las tecnologías conmutables.</li>
         <li>Sesión 3 — martes 17 de noviembre de 2026, 11:00–12:20. El Producto GM.</li>
+        <li>Sesión 4 — jueves 19 de noviembre de 2026, 11:00–12:20. Fractal 2 y estrategia de patentes, con Andrés Alvarado.</li>
         <li><a href="https://patents.google.com/patent/US11421852">US 11,421,852 B2</a> — AGP America SA, concedida el 23 de agosto de 2022. Fuente de los datos de la capa dispersora, la inyección de luz y los umbrales ópticos.</li>
       </ul>
-      <p style="margin-top:8px">Los minutos de cada cita son estimados a partir de la posición en la grabación de cada sesión de 80 minutos.</p>
+      <p style="margin-top:8px">Los minutos son aproximados: señalan el momento de cada sesión de 80 minutos en que se trató el tema, según nuestros apuntes.</p>
     </div>
     <div>
       <h3>Uso de IA generativa · Nivel 4</h3>
-      <p>Claude (Anthropic) ordenó las 16 celdas, redactó los borradores, extrajo los datos de la patente y buscó los ejemplos externos de formato. El equipo verificó cada cita contra la transcripción, corrigió los nombres que la transcripción automática deformó (Saint-Gobain, Pilkington, Kuraray, SkyViera, Gauzy, Fuyao, PPAP), decidió el color de cada celda y escribió la reflexión personal. La declaración completa y la transcripción de los prompts van en el anexo de la guía de entrevista.</p>
+      <p>Claude (Anthropic) ordenó las 16 celdas, redactó los borradores, extrajo los datos de la patente y buscó los ejemplos externos de formato. El equipo tomó los apuntes de las cuatro sesiones y se los aportó a la herramienta, verificó cada cita contra ellos, corrigió los nombres propios que habían quedado anotados de oído (Saint-Gobain, Pilkington, Kuraray, SkyViera, Gauzy, Fuyao, PPAP), decidió el color de cada celda y escribió la reflexión personal. La declaración completa y la transcripción de los prompts van en el anexo de la guía de entrevista.</p>
     </div>
   </div>
 </footer>
@@ -476,13 +478,14 @@ const DATA = [
 
    {estado:"ok", nombre:"Laboratorio", titulo:"Laboratorio",
     que:"Probar en banco, sobre probetas, que las dos tecnologías conviven y que cada una cumple sus parámetros funcionales y de durabilidad.",
-    comoSeVe:"El DVP (Design Verification Plan), una batería de alrededor de 50 ensayos. Funcionales: transmisión de luz contra voltaje, velo, tiempo de respuesta, consumo de corriente a distintas temperaturas. De durabilidad: 90 °C durante 300 horas, cámara de xenón para simular radiación solar, ultravioleta y adherencia. Más probetas de compatibilidad entre tecnologías.",
+    comoSeVe:"El DVP (Design Verification Plan), una batería de alrededor de 50 ensayos. Funcionales: transmisión de luz contra voltaje, velo, tiempo de respuesta, consumo de corriente a distintas temperaturas. De durabilidad: 90 °C durante 300 horas, cámara de xenón para simular radiación solar, ultravioleta y adherencia. Más probetas de compatibilidad entre tecnologías. La validación se divide en bloques funcionales —durabilidad del vidrio, durabilidad del lightbar y durabilidad del sistema ensamblado—, cada uno con su propia probabilidad de falla, y buena parte de las pruebas de concepto se resuelve en simulación antes de construir nada.",
     ejemplo:'El formato estándar de la industria automotriz es el DVP&amp;R, que lista cada ensayo con su criterio de aceptación y su resultado. <a href="https://www.6sigma.us/six-sigma-in-focus/dvpr-design-verification-plan-and-report/" target="_blank" rel="noopener">6Sigma.us · DVP&amp;R</a> · <a href="https://relyence.com/help/user-guide/dvp-r-design-verification-plan-and-report.html" target="_blank" rel="noopener">Relyence · estructura del DVP&amp;R</a>.',
     preguntas:["¿Las dos tecnologías se estorban?","¿Cuánto se degrada el sistema después de N horas de ensayo?","¿Qué hay que sacrificar de una para que la otra funcione?"],
     nexos:"Es la base de la evidencia y validación del TRL, y condiciona el MRL: la curva de autoclave queda limitada por el SPD.",
     hito:"El comité decide si el concepto combinado aguanta y si se invierte en prototipo integrado.",
     citas:[{t:"Yo hacía ensayos en probetas donde colocaba el SPD con vidrio con recubrimiento y vidrio sin recubrimiento. Veía que el vidrio que no tenía recubrimiento se me degradaba más, perdía sus propiedades más rápido.", f:"Sesión 3 · ~min 26"},
-           {t:"Eso puede ser una lista de 50 ensayos… hay un paquete que son funcionales y hay otro paquete que son de durabilidad.", f:"Sesión 2 · ~min 58"}]},
+           {t:"Eso puede ser una lista de 50 ensayos… hay un paquete que son funcionales y hay otro paquete que son de durabilidad.", f:"Sesión 2 · ~min 58"},
+           {t:"Es una estrategia de validación dividirlo en bloques funcionales. Cada uno tiene su probabilidad de falla, y el sistema de por sí también tiene la suya cuando yo los pongo en común. Al final es lo que me va a dar la probabilidad de falla del sistema completo.", f:"Sesión 4 · ~min 62"}]},
 
    {estado:"ok", nombre:"Entorno relevante", titulo:"Entorno relevante",
     que:"El techo deja el banco y se monta sobre el vehículo real, con el cliente mirando.",
@@ -494,7 +497,7 @@ const DATA = [
     citas:[{t:"Se envían 10 vidrios con lo que nos pidieron, la posición de los pines, y ellos van a montar esos vidrios en el carro. Muchas veces el ingeniero de desarrollo y los ingenieros de calidad participan en esos procesos de montaje.", f:"Sesión 3 · ~min 31"},
            {t:"Un chasis como tal no lo entregan, pero un buen 3D con tolerancias, montaje digital, es bastante confiable hoy en día.", f:"Sesión 3 · ~min 31"}]},
 
-   {estado:"gap", nombre:"Entorno operativo", titulo:"Entorno operativo",
+   {estado:"gap", motivo:"la etapa no se alcanzó", nombre:"Entorno operativo", titulo:"Entorno operativo",
     que:"El techo funcionando en vehículos en manos del usuario final, con datos de campo volviendo al fabricante.",
     comoSeVe:"Reportes de garantía, reclamos, devoluciones, análisis de falla de campo, y el plan de mejora continua que cierra la brecha contra la especificación original.",
     ejemplo:'El formato con el que la industria procesa una falla de campo es el 8D: ocho disciplinas, de la contención a la acción preventiva. <a href="https://quality-one.com/8d/" target="_blank" rel="noopener">Quality-One · 8D</a> · <a href="https://quality-one.com/wp-content/uploads/2016/08/8D-Problem-Solving-Checklist.pdf" target="_blank" rel="noopener">lista de verificación 8D (PDF)</a>.',
@@ -503,7 +506,8 @@ const DATA = [
     hito:"El comité decide si el producto confirma el mercado y si se expande. Esa decisión nunca se tomó.",
     citas:[{t:"Se alcanzaron a entregar unas 200 partes. Este programa estaba planeado para 400 a 500 partes por 7 años… alcanzó a producir medio año.", f:"Sesión 3 · ~min 43"},
            {t:"Arrancamos con el Golden Sample, ellos aceptaron arrancar con el Golden Sample. Existía una promesa, un proyecto de mejora continua, pero ese proyecto realmente nunca llegó a arrancar en su totalidad.", f:"Sesión 3 · ~min 35"}],
-    falta:"Esta información no existe, y no por descuido: la etapa nunca se completó. El programa se cerró cuando AGP cerró actividades en Perú, con unas 200 de las ~3.500 piezas comprometidas entregadas. Las piezas producidas quedaron en el stock de GM. Es la única celda roja del grupo, y es la consecuencia acumulada de las tres amarillas."}
+    faltaTitulo:"Hasta dónde llega el caso.",
+    falta:"No es que no hayamos preguntado: es que la etapa no ocurrió, y eso sí está documentado. Las tres preguntas de esta celda tienen respuesta, y es la misma para las tres: no hubo campo. Se entregaron unas 200 de las ~3.500 piezas comprometidas, la producción duró medio año, las piezas quedaron en el stock de GM sin llegar a vehículos en la calle, y el plan de mejora continua que debía cerrar la desviación del 20 % nunca arrancó. El rojo marca que el Producto GM no alcanzó el entorno operativo, no que nos falte información sobre él. Es la consecuencia acumulada de todo lo que quedó sin cerrar aguas arriba."}
   ]
 },
 {
@@ -537,7 +541,8 @@ const DATA = [
     nexos:"Alimenta el entorno relevante del TRL y golpea directo el modelo financiero: el film solo cuesta cerca de mil dólares por techo.",
     hito:"El comité decide si la línea puede sostener la producción comprometida.",
     citas:[{t:"Arrancamos con yields del 20 %, muy bajo. Para producir, de 10 botábamos 8, también con el costo que el vidrio ya traía.", f:"Sesión 3 · ~min 38"},
-           {t:"Teníamos unas salas especiales de medición de iluminación, que eso no es común en la fabricación de vidrio automotriz. Una zona de preparación, una de medición de color, una de cuarto oscuro.", f:"Sesión 1 · ~min 77"}]},
+           {t:"Teníamos unas salas especiales de medición de iluminación, que eso no es común en la fabricación de vidrio automotriz. Una zona de preparación, una de medición de color, una de cuarto oscuro.", f:"Sesión 1 · ~min 77"},
+           {t:"Si fallaba la electrónica, tocaba coger ese vidrio, que costaba 4.500 dólares, y a la basura.", f:"Sesión 4 · ~min 55"}]},
 
    {estado:"ok", nombre:"Capacidad y rendimiento", titulo:"Capacidad y rendimiento",
     que:"Lo que la línea realmente entrega en serie, frente a lo que se estimó.",
@@ -553,16 +558,20 @@ const DATA = [
 {
   fila:"Equipo", escala:"TMRL · Otros IRLs",
   celdas:[
-   {estado:"warn", nombre:"Equipo fundador", titulo:"Equipo fundador",
-    que:"Quiénes arrancaron el programa y de dónde salieron.",
-    comoSeVe:"Acta de constitución del proyecto, organigrama inicial con dedicaciones, matriz de responsabilidades.",
+   {estado:"warn", motivo:"el caso cuenta el origen, no la constitución", nombre:"Equipo fundador", titulo:"Equipo fundador",
+    que:"De dónde salió la idea y quiénes la empujaron antes de que existiera un programa.",
+    comoSeVe:"Acta de constitución del proyecto, organigrama inicial con dedicaciones, matriz de responsabilidades. En este caso el origen no fue un documento sino una feria: alguien del equipo vio allí vidrio iluminado usado en publicidad y marketing, y de esa visita salió la búsqueda del proveedor de tinta que dio origen a Fractal.",
     ejemplo:'El acta de constitución es el documento que nombra al responsable, el alcance y los recursos antes de que el proyecto exista formalmente. <a href="https://www.pmi.org/blog/project-charter" target="_blank" rel="noopener">PMI · qué contiene un project charter</a>.',
     preguntas:["¿Quién es el dueño del programa?","¿Qué capacidad falta en el grupo inicial?","¿Quién responde frente al cliente?"],
     nexos:"Debería conectar con el BRL (quién hizo la propuesta a GM) y con el TRL (quién llevaba Fractal).",
     hito:"El comité decide si hay equipo para sostener el proyecto.",
     citas:[{t:"Ya había un esfuerzo comercial muy grande: el representante comercial de Estados Unidos constantemente estaba haciendo lobbying con el equipo de GM para buscar qué proyectos había, dónde AGP podía participar.", f:"Sesión 1 · ~min 36"},
-           {t:"Nosotros teníamos los bloques tecnológicos: el grupo que trabajaba VarioPlus, otro los recubrimientos, otro los temas de Fractal, otro los temas de curvado.", f:"Sesión 3 · ~min 22"}],
-    falta:"Sabemos que existía una estructura por bloques tecnológicos y un representante comercial en Estados Unidos haciendo el acercamiento, pero <b>no se nombró quién arrancó el programa GM, cuándo se formalizó ni con qué dedicaciones</b>. No hay acta de arranque ni organigrama inicial en el relato."},
+           {t:"Nosotros teníamos los bloques tecnológicos: el grupo que trabajaba VarioPlus, otro los recubrimientos, otro los temas de Fractal, otro los temas de curvado.", f:"Sesión 3 · ~min 22"},
+           {t:"Nos pusimos a buscar tintas para vidrios invisibles, para marketing, con inyección de luz, hasta que vimos que una empresa italiana tenía un producto interesante. Eso fue lo que trajimos y lo que implementamos para la pintura directamente en vidrio.", f:"Sesión 1 · ~min 5"},
+           {t:"Puedo llegar a un efecto muy parecido al de ese concepto inicial que vimos en la feria, pero con una diferencia en precio significativa.", f:"Sesión 1 · ~min 6"},
+           {t:"Dentro de R&amp;D teníamos el equipo de gestión, donde cada bloque tecnológico tenía su líder. En mi caso yo era gerente de varios bloques tecnológicos y le reportaba a un vicepresidente de R&amp;D, que le reportaba al CEO.", f:"Sesión 4 · ~min 70"}],
+    faltaTitulo:"Hasta dónde llega el caso.",
+    falta:"El caso cuenta el origen con detalle y cuenta la estructura, pero no la constitución formal del programa. Sí sabemos de dónde salió la idea —una feria, donde el equipo vio vidrio iluminado usado en publicidad, y de ahí la búsqueda de tinta que terminó en un proveedor italiano—, sabemos quién abrió la puerta con GM y conocemos la línea de mando: bloque tecnológico, gerente de bloques, vicepresidente de I+D, CEO. Lo que el caso no toca es el papeleo de arranque —acta, organigrama inicial, dedicaciones—, y es coherente que no lo toque: el entrevistado dirigía la tecnología, no la administración del programa. Nombres propios no hacían falta: los inventores de Fractal son públicos en la patente."},
 
    {estado:"ok", nombre:"Equipo de I+D", titulo:"Equipo de I+D",
     que:"El equipo técnico que desarrolla la tecnología, y cómo se consiguieron las competencias que no existían en casa.",
@@ -573,7 +582,8 @@ const DATA = [
     hito:"El comité decide si el equipo puede llevar la tecnología al siguiente nivel.",
     citas:[{t:"El equipo de Fractal eran en un momento unas 10 personas, había otro equipo de VarioPlus también con unas 10 personas.", f:"Sesión 2 · ~min 76"},
            {t:"Lo que terminamos haciendo fue gente muy pila con muchas ganas de aprender… y contratábamos consultoría especializada en Alemania, en Estados Unidos, de temas de iluminación automotriz, y le poníamos estos ingenieros junior bien pegados para que absorbieran.", f:"Sesión 1 · ~min 66"},
-           {t:"Lo que no teníamos mucho era competencia a nivel de medición de luz y de color. Eso nos tocó casi que desarrollarlo desde cero.", f:"Sesión 1 · ~min 66"}]},
+           {t:"Lo que no teníamos mucho era competencia a nivel de medición de luz y de color. Eso nos tocó casi que desarrollarlo desde cero.", f:"Sesión 1 · ~min 66"},
+           {t:"Dentro de R&amp;D teníamos un equipo de recubrimientos, con varios científicos que tienen una base de teoría óptica muy fuerte. Lo que hacíamos era unirlos al equipo de Fractal para que le dieran ese conocimiento técnico.", f:"Sesión 4 · ~min 72"}]},
 
    {estado:"ok", nombre:"Plan de recursos humanos", titulo:"Plan de recursos humanos",
     que:"Cómo se organiza la gente cuando la tecnología pasa a ser producto y después a ser línea de producción.",
@@ -584,18 +594,22 @@ const DATA = [
     hito:"El comité decide si la organización puede recibir lo que I+D va a soltar.",
     citas:[{t:"Lo que también generamos fueron grupos transversales, más tipo gerentes de proyectos técnicos, que entendían el mundo de las tecnologías y el mundo de la fabricación de vidrio, y eran capaces de coger la madurez de diferentes tecnologías e integrarlo en productos.", f:"Sesión 3 · ~min 53"},
            {t:"Los de allá no se entendían con los de acá, entonces se la pasaban peleando en reuniones. Al final se fue creando un equipo, creamos canales de comunicación para reducir el gap de conocimiento.", f:"Sesión 3 · ~min 53"},
-           {t:"Yo les quiero entregar, ellos quieren recibir la cosa ya hecha, bien desmenuzada, que no tengan que sufrir. Y aquí yo les quiero rápidamente sacar tecnologías y lanzarlas. Entonces ahí siempre hay mucho conflicto.", f:"Sesión 3 · ~min 55"}]},
+           {t:"Yo les quiero entregar, ellos quieren recibir la cosa ya hecha, bien desmenuzada, que no tengan que sufrir. Y aquí yo les quiero rápidamente sacar tecnologías y lanzarlas. Entonces ahí siempre hay mucho conflicto.", f:"Sesión 3 · ~min 55"},
+           {t:"Cuando uno monta una estructura de investigación y desarrollo, uno tiene que dejar que los científicos y la gente experta trabajen en sus celdas, por eso son expertos. Pero tiene que haber una gestión macro en el R&amp;D para sacarle jugo a toda esa información: saber interconectar a las personas, sacarlas de su bloque y traerlas a un problema específico.", f:"Sesión 4 · ~min 72"}]},
 
-   {estado:"warn", nombre:"Acuerdos formalizados", titulo:"Acuerdos formalizados",
+   {estado:"ok", nombre:"Acuerdos formalizados", titulo:"Acuerdos formalizados",
     que:"Lo que queda firmado con terceros y con el propio equipo al cerrar el programa.",
-    comoSeVe:"Contratos de suministro, acuerdos de confidencialidad, convenios de transferencia y acuerdos con los proveedores clave.",
+    comoSeVe:"Contratos de suministro, acuerdos de confidencialidad y acuerdos con los proveedores clave. Hacia adentro, AGP sostenía el conocimiento con políticas de recursos humanos distintas para I+D: bonos de retención, proyección de carrera declarada y acuerdos de confidencialidad para que la gente no se fuera a la competencia, porque el proceso —las temperaturas de sinterizado de la tinta— era secreto industrial y no patente.",
     ejemplo:'El modelo IRL de KTH —el mismo del que salen las escalas de este curso— define en su escala de equipo qué cuenta como acuerdo formalizado en cada nivel, desde el entendimiento verbal hasta el contrato firmado. <a href="https://frq.gouv.qc.ca/app/uploads/2025/02/kth-irl-user-guide_va.pdf" target="_blank" rel="noopener">KTH Innovation Readiness Level · guía de usuario (PDF)</a>.',
     preguntas:["¿Qué compromisos sobreviven al programa?","¿Quién responde por garantía y repuesto?","¿Qué pasa con el conocimiento cuando la gente se va?"],
     nexos:"Se solapa con los contratos comerciales del BRL y con la gestión de propiedad intelectual.",
     hito:"El comité decide si la empresa queda cubierta.",
     citas:[{t:"Uno tiene que asegurarles a ellos la producción por 7 años como parte del contrato, y después de esa producción por 7 años uno tiene que estar dispuesto a fabricar lo que es el mercado de reposición.", f:"Sesión 3 · ~min 74"},
-           {t:"Sí hubo multas, pero también hubo una discusión comercial, porque también les subíamos el precio y nos aceptaban. Entonces teníamos la multa ahí en medio.", f:"Sesión 3 · ~min 66"}],
-    falta:"Están los compromisos con el cliente —siete años de suministro, mercado de reposición, multas por incumplimiento— y las relaciones con el proveedor italiano de tinta y con el fabricante de la electrónica. Pero <b>no hay nada sobre acuerdos con el propio equipo</b>: qué pasó con la gente y con el conocimiento cuando se cerró la planta de Perú. Es la celda que más valdría la pena cerrar con una pregunta más."}
+           {t:"Sí hubo multas, pero también hubo una discusión comercial, porque también les subíamos el precio y nos aceptaban. Entonces teníamos la multa ahí en medio.", f:"Sesión 3 · ~min 66"},
+           {t:"Todo lo que era el procesamiento, la tinta, las temperaturas que se utilizaban, todo eso era secreto industrial de la empresa. ¿Cómo se protegía? Simplemente con el know-how interno y protegiendo que los empleados no se fueran a la competencia, con acuerdos de confidencialidad.", f:"Sesión 4 · ~min 78"},
+           {t:"Hay estrategias que recursos humanos utiliza para retener a las personas: incentivarlos, bonos de retención, que la empresa les muestre una proyección de carrera. R&amp;D tenía unas políticas de recursos humanos diferentes a las de los otros tipos de productos.", f:"Sesión 4 · ~min 66"}],
+    faltaTitulo:"Hasta dónde llega el caso.",
+    falta:"La celda cierra por los dos lados. Hacia afuera: siete años de suministro más mercado de reposición, multas por incumplimiento negociadas contra subidas de precio, y la licencia pagada al dueño de la patente del film con regalía por pieza. Hacia adentro: acuerdos de confidencialidad con los empleados y políticas de retención propias de I+D, que es como se protegía lo que deliberadamente no se patentaba. Lo único que el caso no alcanza a contar es qué pasó con esos acuerdos al cerrar Perú, porque el programa dejó de existir antes que los contratos."}
   ]
 },
 {
@@ -623,7 +637,7 @@ const DATA = [
            {t:"Se le preguntan al ingeniero: ¿cuánto yield de este proceso? Ellos dicen, no, yo creo que se va a perder el 20 %. Resulta que cuando se comienza a fabricar, se comienza con un scrap del 90 % los primeros meses.", f:"Sesión 2 · ~min 44"},
            {t:"Una cosa es desarrollar la tecnología y otra es desarrollar el producto.", f:"Sesión 3 · ~min 12"}]},
 
-   {estado:"warn", nombre:"Convenios piloto y modelo ajustado", titulo:"Convenios piloto y modelo financiero ajustado",
+   {estado:"warn", motivo:"el entrevistado la declara incompleta", nombre:"Convenios piloto y modelo ajustado", titulo:"Convenios piloto y modelo financiero ajustado",
     que:"Lo que se firma antes de la serie y cómo cambia la cuenta cuando ya hay costos reales.",
     comoSeVe:"Acuerdo de desarrollo o carta de intención, business case revisado y análisis competitivo. En el Gate 3 se cerraron el concepto, la especificación de producto y la revisión del business case contra la competencia, con su análisis DOFA.",
     ejemplo:'El modelo Stage-Gate define qué entregables deben estar completos para cruzar cada puerta, y el modelo financiero actualizado es uno de ellos. <a href="https://stage-gate.com/blog/the-stage-gate-model-an-overview" target="_blank" rel="noopener">Stage-Gate · el modelo y sus puertas</a>.',
@@ -632,7 +646,8 @@ const DATA = [
     hito:"El comité decide si implementar.",
     citas:[{t:"El slide de financial model, ese está abierto. Nunca llegó a nosotros como parte técnica, creo que nos lo saltamos en ese momento.", f:"Sesión 1 · ~min 52"},
            {t:"No teníamos una buena rentabilidad del producto, pero la forma de solucionarlo es que le subimos un poco más el precio y GM lo terminó aceptando. Al principio se le estaba cobrando X y después se le subió un 20 o 30 %.", f:"Sesión 1 · ~min 52"}],
-    falta:"El Gate 3 se cerró por el lado técnico y comercial, pero <b>el modelo financiero ajustado quedó explícitamente abierto</b> y nunca llegó al equipo técnico. Tampoco se hizo nunca el balance de Fractal 1. Es una celda amarilla por confesión del propio entrevistado, no por falta de respuesta."},
+    faltaTitulo:"Hasta dónde llega el caso.",
+    falta:"Este amarillo no lo explica la quiebra. El Gate 3 se cerró en pleno programa, con el concepto y la especificación de producto listos y el business case revisado contra la competencia, y aun así <b>el modelo financiero ajustado quedó abierto</b>: nunca llegó al equipo técnico. Tampoco se hizo después el balance de Fractal 1. Es la única celda que el propio entrevistado marca como incompleta, años antes del cierre de la planta, y por eso es la más reveladora del mapa: la decisión de implementar se tomó sin el número que debía sostenerla."},
 
    {estado:"ok", nombre:"Contratos comerciales", titulo:"Contratos comerciales con aliados clave",
     que:"Lo que sostiene el producto en el mercado: con el cliente, con los dueños de la tecnología y con los proveedores.",
@@ -682,7 +697,7 @@ function render(ri, ci, scroll){
   const q = c.citas.map(x => `<blockquote>«${x.t}»<cite>${x.f}</cite></blockquote>`).join('');
   detail.innerHTML = `
     <div class="d-top">
-      <span class="badge ${c.estado}">${ESTADO_TXT[c.estado]}</span>
+      <span class="badge ${c.estado}">${ESTADO_TXT[c.estado]}${c.motivo ? ' · ' + c.motivo : ''}</span>
       <span class="d-path">${row.escala} &nbsp;·&nbsp; ${ETAPAS[ci]}</span>
     </div>
     <div class="d-title">${c.titulo}</div>
@@ -695,7 +710,7 @@ function render(ri, ci, scroll){
     </div>
     <div class="ext"><h4>Ejemplo de formato, ajeno a AGP</h4><p>${c.ejemplo}</p></div>
     <div class="quotes"><div class="pt"><h4>Qué mostró el Producto GM</h4></div>${q}</div>
-    ${c.falta ? `<div class="missing"><b>Lo que falta.</b> ${c.falta}</div>` : ''}`;
+    ${c.falta ? `<div class="missing"><b>${c.faltaTitulo || 'Hasta dónde llega el caso.'}</b> ${c.falta}</div>` : ''}`;
   document.querySelectorAll('.cell').forEach(b => {
     b.setAttribute('aria-pressed', (b.dataset.r == ri && b.dataset.c == ci) ? 'true' : 'false');
   });
