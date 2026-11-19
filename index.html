@@ -271,7 +271,8 @@ footer{border-top:1px solid var(--line); background:var(--surface); margin-top:4
       <span>Producto GM · 2020–2024</span>
       <span>Entorno de demostración · Manufactura · Equipo · Modelo de negocio</span>
       <span>4 subdimensiones × 4 etapas</span>
-      <span>3 sesiones con Andrés Sarmiento</span>
+      <span>4 sesiones de clase</span>
+      <span>Versión del 19 de noviembre de 2026</span>
     </div>
   </div>
 </header>
@@ -352,10 +353,10 @@ footer{border-top:1px solid var(--line); background:var(--surface); margin-top:4
       <div class="legend">
         <span><i class="i-ok"></i>Está</span>
         <span><i class="i-warn"></i>Está parcial</span>
-        <span><i class="i-gap"></i>Falta</span>
+        <span><i class="i-gap"></i>No existe</span>
       </div>
     </div>
-    <p class="sec-note">Cada celda abre lo que el modelo pide: qué es la información, cómo se ve, un ejemplo de fuera de AGP que muestra el formato, qué preguntas le responde al comité, qué nexos tiene, qué se decide con ella en el hito, y qué mostró el caso con su evidencia. Toque una celda. <strong>El color describe el caso, no nuestra entrevista:</strong> marca hasta dónde llegó el Producto GM en cada información, y toda celda que no esté en verde explica con su evidencia por qué el recorrido no fue más lejos.</p>
+    <p class="sec-note">Cada celda abre lo que el modelo pide: qué es la información, cómo se ve, un ejemplo de fuera de AGP que muestra el formato, qué preguntas le responde al comité, qué nexos tiene, qué se decide con ella en el hito, y qué mostró el caso con su evidencia. Toque una celda. <strong>El color describe el caso, no nuestra entrevista:</strong> marca hasta dónde llegó el Producto GM en cada información, y toda celda que no esté en verde explica con su evidencia por qué el recorrido no fue más lejos. El modelo del curso llama a estos tres estados <em>está</em>, <em>está parcial</em> y <em>falta</em>; aquí el tercero se nombra <em>no existe</em>, porque no se trata de información que no hayamos conseguido sino de información que nunca llegó a generarse.</p>
 
     <div class="desk-matrix">
       <div class="matrix" id="grid"></div>
@@ -662,7 +663,7 @@ const DATA = [
   ]
 }];
 
-const ESTADO_TXT = {ok:"Está", warn:"Parcial", gap:"Falta"};
+const ESTADO_TXT = {ok:"Está", warn:"Está parcial", gap:"No existe"};
 
 const grid = document.getElementById('grid');
 const mgrid = document.getElementById('mgrid');
